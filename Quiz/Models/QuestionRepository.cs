@@ -19,6 +19,7 @@ namespace Quiz.Models
             Add(new Question { QuestionString = "What boss drops Glove token?(Normal and HC mode)" });
             Add(new Question { QuestionString = "What boss drops Chest token?(Normal and HC mode)" });
             Add(new Question { QuestionString = "What boss drops Pants token?(Normal and HC mode)" });
+            Add(new Question { QuestionString = "What boss drops Head token?(Normal and HC mode)" });
         }
         public IEnumerable<Question> GetAll()
         {

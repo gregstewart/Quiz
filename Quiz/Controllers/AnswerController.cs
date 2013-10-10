@@ -4,21 +4,24 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Quiz.Models;
 
 namespace Quiz.Controllers
 {
     public class AnswerController : ApiController
     {
+        static readonly IAnswerRespository repository = new AnswerRepository();
+        
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public IEnumerable<Answer> Get()
         {
-            return new string[] { "value1", "value2" };
+            return repository.GetAll();
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public Answer Get(int id)
         {
-            return "value";
+            return repository.Get(id);
         }
 
         // POST api/<controller>
@@ -34,6 +37,12 @@ namespace Quiz.Controllers
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+        }
+
+        // GET api/<controller>/?question=5
+        public IEnumerable<Answer> GetByQuestion(int question)
+        {
+            return repository.GetAll().Where(p => int.Equals(p.QuestionId, question));
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Quiz.Tests.Controllers
             Question firstQuestion = result.ElementAt(0);
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(6, result.Count());
+            Assert.AreEqual(7, result.Count());
 
             Assert.AreEqual("What boss was added in Baradin hold in 4.3?", firstQuestion.QuestionString);
             Assert.AreEqual(1, firstQuestion.Id);
@@ -60,7 +60,7 @@ namespace Quiz.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(question, result.QuestionString);
-            Assert.AreEqual(7, result.Id);
+            Assert.AreEqual(8, result.Id);
 
         }
 //
