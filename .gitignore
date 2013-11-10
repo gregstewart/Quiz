@@ -159,4 +159,4 @@ $RECYCLE.BIN/
 .idea/
 
 # ignore karma coverage files
-
+Quiz.Tests/coverage/
