@@ -11,8 +11,9 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files : [
       '../Quiz/Scripts/jquery-1.8.2.min.js',
+      '../Quiz.Tests/Scripts/lib/sinon-1.7.3.js',
       {pattern: '../Quiz/Scripts/src/*.js'},
-      {pattern: '../Quiz.Tests/Scripts/**/*.js'}
+      {pattern: '../Quiz.Tests/Scripts/src/**/*.js'}
     ],
 
 

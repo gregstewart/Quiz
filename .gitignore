@@ -157,3 +157,6 @@ $RECYCLE.BIN/
 
 # IntelliJ IDE files
 .idea/
+
+# ignore karma coverage files
+
