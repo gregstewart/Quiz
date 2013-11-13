@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="Quiz.Azure" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-10.2.2">
+  <Role name="Quiz">
+    <Instances count="2" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=kyl;AccountKey=xUdWRmW2kv5zw/MnGsi3S3PkQK68Hx4RR6SJDA3dNFO0eJh77RDoVsMcu33dgwKYmM2enuuaXyU3KlqwAQNHJQ==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
