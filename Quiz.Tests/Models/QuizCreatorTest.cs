@@ -23,10 +23,10 @@ namespace Quiz.Tests.Models
 
             Assert.IsTrue(questions.Count() > 0);
 
-//            Question firstQuestion = questions.ElementAt(0);
-//            var answer = firstQuestion.GetAnswer();
-//
-//            Assert.IsTrue(answer.Count() > 0);
+            Question firstQuestion = questions.ElementAt(0);
+            var answers = firstQuestion.GetAnswers();
+
+            Assert.IsTrue(answers.Count() > 0);
 
         }
 

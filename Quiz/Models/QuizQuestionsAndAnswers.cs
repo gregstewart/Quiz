@@ -7,9 +7,9 @@ namespace Quiz.Models
 {
     public class QuizQuestionsAndAnswers
     {
-        private List<Question> _questions;
+        private IEnumerable<Question> _questions;
 
-        public QuizQuestionsAndAnswers(List<Question> questions)
+        public QuizQuestionsAndAnswers(IEnumerable<Question> questions)
         {
             _questions = questions;
         }

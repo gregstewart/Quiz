@@ -10,5 +10,9 @@ namespace Quiz.Models
         public int Id { get; set; }
         public String QuestionString { get; set; }
 
+        public IEnumerable<Answer> GetAnswers()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
