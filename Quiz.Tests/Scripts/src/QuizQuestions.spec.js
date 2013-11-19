@@ -1,6 +1,7 @@
 describe('QuizQuestions', function () {
   beforeEach(function () {
-    this.collection = new Quiz.QuizQuestions();
+    this.collection = new KnowYourLore.QuizQuestions();
+
     this.response = [
       {
         questionId: 0,
@@ -10,39 +11,25 @@ describe('QuizQuestions', function () {
           'answer 2',
           'answer 3'
         ]
+      },
+      {
+        questionId: 1,
+        question: 'some other question',
+        answers: [
+          'answer 1',
+          'answer 2'
+        ]
       }
     ];
+
   });
 
   afterEach(function () {
+
   });
 
   it('initialises with an empty collection', function () {
     expect(this.collection.length).toBe(0);
-  });
-
-  describe('askForNewQuiz', function () {
-    beforeEach(function () {
-      this.server = sinon.fakeServer.create();
-    });
-
-    afterEach(function () {
-      this.server.restore();
-    });
-
-    it('sets the collection URI with the response header value from the service', function (done) {
-
-      var url = "/quiz/";
-      this.server.respondWith("POST", url,
-          [201, { "Content-Type": "application/json",
-            "Location": url + "some-id" },
-            'null']);
-      this.collection.askForNewQuiz();
-      this.server.respond();
-
-      expect(this.collection.url).toBe(url + "some-id");
-
-    });
   });
 
   describe('fetch questions from server', function () {
@@ -62,7 +49,7 @@ describe('QuizQuestions', function () {
     });
 
     it('populates the collection from the response', function () {
-      expect(this.collection.length).toBe(1);
+      expect(this.collection.length).toBe(2);
     });
 
     it('sets the correct questionId', function () {
@@ -83,5 +70,30 @@ describe('QuizQuestions', function () {
     });
   });
 
+  describe('askForNewQuiz', function () {
+    beforeEach(function () {
+      this.collectionStub = sinon.stub(this.collection, 'fetch');
+      this.server = sinon.fakeServer.create();
+    });
+
+    afterEach(function () {
+      this.server.restore();
+      this.collection.fetch.restore();
+    });
+
+    it('sets the collection URI with the response header value from the service and calls fetch', function (done) {
+
+      var url = "/quiz/";
+      this.server.respondWith("POST", url,
+          [201, { "Content-Type": "application/json",
+            "Location": url + "some-id" },
+            'null']);
+      this.collection.askForNewQuiz();
+      this.server.respond();
+
+      expect(this.collection.url).toBe(url + "some-id");
+      expect(this.collectionStub.calledOnce).toBe(true);
+    });
+  });
 
 });

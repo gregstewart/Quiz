@@ -1,6 +1,6 @@
-var Quiz = Quiz || {};
+var KnowYourLore = KnowYourLore || {};
 
-Quiz.QuizQuestions = Backbone.Collection.extend({
+KnowYourLore.QuizQuestions = Backbone.Collection.extend({
   url: '/quiz/',
 
   askForNewQuiz: function () {
@@ -8,6 +8,7 @@ Quiz.QuizQuestions = Backbone.Collection.extend({
     resp = this.create();
     resp.on('sync', function () {
       self.url = arguments[2].xhr.getResponseHeader('Location');
+      self.fetch();
     });
   }
 
