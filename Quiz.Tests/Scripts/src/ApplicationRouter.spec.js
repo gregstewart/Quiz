@@ -22,9 +22,14 @@ describe('Application router', function () {
   });
 
   it('calls the index route by navigating to /', function () {
-    this.router.bind('route:index', this.indexRouteStub, this);
-    this.router.navigate('/', {trigger: true});
+    var self = this,
+        pushStateSpy = sinon.stub(window.history, 'pushState', function (data, title, url) {
+          expect(url).toEqual('/');
+          self.router.index();
+        });
 
+    this.router.navigate('/', {trigger: true});
+    expect(pushStateSpy.called).toBe(true);
     expect(this.indexRouteStub.called).toBe(true);
   })
 });
