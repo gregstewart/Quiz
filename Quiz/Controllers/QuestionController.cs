@@ -27,8 +27,8 @@ namespace Quiz.Controllers
         // POST api/<controller>
         public Question Post([FromBody]string value)
         {
-            Question question = new Question { QuestionString = value };
-            return repository.Add(question);
+            Question questionBag = new Question { QuestionString = value };
+            return repository.Add(questionBag);
         }
 
         // PUT api/<controller>/5

@@ -23,8 +23,8 @@ namespace Quiz.Tests.Models
 
             Assert.IsTrue(questions.Count() > 0);
 
-            Question firstQuestion = questions.ElementAt(0);
-            var answers = firstQuestion.GetAnswers();
+            QuestionBag firstQuestionBag = (QuestionBag) questions.ElementAt(0);
+            var answers = firstQuestionBag.GetAnswers();
 
             Assert.IsTrue(answers.Count() > 0);
 

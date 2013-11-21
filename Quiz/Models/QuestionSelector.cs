@@ -6,10 +6,11 @@ using WebGrease.Css.Extensions;
 
 namespace Quiz.Models
 {
-    public class QuestionPicker
+    public class QuestionSelector
     {
-        IEnumerable<Question> _selectedQuestions = null;
-        public IEnumerable<Question> GetQuestions()
+        IEnumerable<Question> _shuffledQuestions;
+        List<QuestionBag> _selectedQuestions = new List<QuestionBag>();
+        public IEnumerable<QuestionBag> GetQuestions()
         {
             
             QuestionRepository questionsRepository = new QuestionRepository();
@@ -17,16 +18,20 @@ namespace Quiz.Models
 
             var randGen = new Random();
 
-            _selectedQuestions = Shuffle(questions, randGen);
+            _shuffledQuestions = Shuffle(questions, randGen);
+
+            foreach(var _question in _shuffledQuestions)
+            {
+                _selectedQuestions.Add(new QuestionBag(_question.Id, _question.QuestionString));
+            }
 
             return _selectedQuestions;
         }
 
-        public IEnumerable<Answer> GetAnswersForSelectedQuestions(int questionIndex)
+        public IEnumerable<Answer> GetAnswersForSelectedQuestions(int questionId)
         {
-            int questionId = _selectedQuestions.ElementAt(questionIndex).Id;
             AnswerRepository answerRepository = new AnswerRepository();
-            IEnumerable<Answer> answers = answerRepository.GetAll().Where(p => int.Equals(p.QuestionId, question));
+            IEnumerable<Answer> answers = answerRepository.GetAll().Where(p => int.Equals(p.QuestionId, questionId));
             return answers;
         } 
 
@@ -42,6 +47,18 @@ namespace Quiz.Models
                 yield return elements[swapIndex];
                 elements[swapIndex] = elements[i];
             }
+        }
+
+        public IEnumerable<QuestionBag> Select()
+        {
+            this.GetQuestions();
+
+            foreach (var _question in _selectedQuestions)
+            {
+                _question.SetAnswers(GetAnswersForSelectedQuestions(_question.Id));
+            }
+
+            return _selectedQuestions;
         }
     }
 }

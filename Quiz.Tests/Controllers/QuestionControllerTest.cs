@@ -22,13 +22,13 @@ namespace Quiz.Tests.Controllers
 
             // Act
             IEnumerable<Question> result = controller.Get();
-            Question firstQuestion = result.ElementAt(0);
+            Question firstQuestionBag = result.ElementAt(0);
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(7, result.Count());
 
-            Assert.AreEqual("What boss was added in Baradin hold in 4.3?", firstQuestion.QuestionString);
-            Assert.AreEqual(1, firstQuestion.Id);
+            Assert.AreEqual("What boss was added in Baradin hold in 4.3?", firstQuestionBag.QuestionString);
+            Assert.AreEqual(1, firstQuestionBag.Id);
         }
 
         [TestMethod]

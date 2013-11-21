@@ -7,14 +7,14 @@ namespace Quiz.Models
 {
     public class QuizQuestionsAndAnswers
     {
-        private IEnumerable<Question> _questions;
+        private IEnumerable<QuestionBag> _questions;
 
-        public QuizQuestionsAndAnswers(IEnumerable<Question> questions)
+        public QuizQuestionsAndAnswers(IEnumerable<QuestionBag> questions)
         {
             _questions = questions;
         }
 
-        public IEnumerable<Question> GetQuestions()
+        public IEnumerable<QuestionBag> GetQuestions()
         {
             return _questions;
         }

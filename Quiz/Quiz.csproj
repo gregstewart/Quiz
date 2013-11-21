@@ -166,7 +166,8 @@
     <Compile Include="Models\IAnswerRespository.cs" />
     <Compile Include="Models\IQuestionRepository.cs" />
     <Compile Include="Models\Question.cs" />
-    <Compile Include="Models\QuestionPicker.cs" />
+    <Compile Include="Models\QuestionBag.cs" />
+    <Compile Include="Models\QuestionSelector.cs" />
     <Compile Include="Models\QuestionRepository.cs" />
     <Compile Include="Models\QuizQuestionsAndAnswers.cs" />
     <Compile Include="Models\QuizCreator.cs" />
