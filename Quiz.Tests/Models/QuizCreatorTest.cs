@@ -17,14 +17,14 @@ namespace Quiz.Tests.Models
             QuizCreator quizCreator = new QuizCreator();
             var questionsAndAnswers = quizCreator.Generate();
 
-            Assert.IsInstanceOfType(questionsAndAnswers, typeof(QuizQuestionsAndAnswers));
+            Assert.IsInstanceOfType(questionsAndAnswers, typeof(QuestionBag));
             
             var questions = questionsAndAnswers.GetQuestions();
 
             Assert.IsTrue(questions.Count() > 0);
 
-            QuestionBag firstQuestionBag = (QuestionBag) questions.ElementAt(0);
-            var answers = firstQuestionBag.GetAnswers();
+            QuizQuestionAndAnswers firstQuizQuestionAndAnswers = (QuizQuestionAndAnswers) questions.ElementAt(0);
+            var answers = firstQuizQuestionAndAnswers.GetAnswers();
 
             Assert.IsTrue(answers.Count() > 0);
 

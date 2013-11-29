@@ -9,8 +9,8 @@ namespace Quiz.Models
     public class QuestionSelector
     {
         IEnumerable<Question> _shuffledQuestions;
-        List<QuestionBag> _selectedQuestions = new List<QuestionBag>();
-        public IEnumerable<QuestionBag> GetQuestions()
+        List<QuizQuestionAndAnswers> _selectedQuestions = new List<QuizQuestionAndAnswers>();
+        public IEnumerable<QuizQuestionAndAnswers> GetQuestions()
         {
             
             QuestionRepository questionsRepository = new QuestionRepository();
@@ -22,7 +22,7 @@ namespace Quiz.Models
 
             foreach(var _question in _shuffledQuestions)
             {
-                _selectedQuestions.Add(new QuestionBag(_question.Id, _question.QuestionString));
+                _selectedQuestions.Add(new QuizQuestionAndAnswers(_question.Id, _question.QuestionString));
             }
 
             return _selectedQuestions;
@@ -49,7 +49,7 @@ namespace Quiz.Models
             }
         }
 
-        public IEnumerable<QuestionBag> Select()
+        public IEnumerable<QuizQuestionAndAnswers> Select()
         {
             this.GetQuestions();
 

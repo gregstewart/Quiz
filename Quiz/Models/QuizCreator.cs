@@ -7,7 +7,7 @@ namespace Quiz.Models
 {
     public class QuizCreator
     {
-        private IEnumerable<QuestionBag> _questions = new List<QuestionBag>();
+        private IEnumerable<QuizQuestionAndAnswers> _questions = new List<QuizQuestionAndAnswers>();
         private QuestionSelector _questionSelector;
 
         public QuizCreator()
@@ -15,13 +15,13 @@ namespace Quiz.Models
             _questionSelector = new QuestionSelector();
         }
 
-        public QuizQuestionsAndAnswers Generate()
+        public QuestionBag Generate()
         {
             _questions = _questionSelector.Select();
 
-            QuizQuestionsAndAnswers quizQuestionsAndAnswers = new QuizQuestionsAndAnswers(_questions);
+            QuestionBag questionBag = new QuestionBag(_questions);
 
-            return quizQuestionsAndAnswers;
+            return questionBag;
         }
     }
 }

@@ -7,25 +7,16 @@ namespace Quiz.Models
 {
     public class QuestionBag
     {
-        private IEnumerable<Answer> _answers = null;
-        
-        public QuestionBag(int id, string questionString)
-        {
-            this.Id = id;
-            this.QuestionString = questionString;
-        }
-        
-        public int Id { get; set; }
-        public String QuestionString { get; set; }
+        private IEnumerable<QuizQuestionAndAnswers> _questions;
 
-        public IEnumerable<Answer> GetAnswers()
+        public QuestionBag(IEnumerable<QuizQuestionAndAnswers> questions)
         {
-            return _answers;
+            _questions = questions;
         }
 
-        public void SetAnswers(IEnumerable<Answer> answers)
+        public IEnumerable<QuizQuestionAndAnswers> GetQuestions()
         {
-            _answers = answers;
+            return _questions;
         }
     }
 }

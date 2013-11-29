@@ -13,7 +13,7 @@ namespace Quiz.Tests.Models
         public void GetQuestions()
         {
             QuestionSelector questionSelector = new QuestionSelector();
-            IEnumerable<QuestionBag> questions = questionSelector.GetQuestions();
+            IEnumerable<QuizQuestionAndAnswers> questions = questionSelector.GetQuestions();
 
             Assert.IsTrue(questions.Count() > 0);
         }
@@ -32,7 +32,7 @@ namespace Quiz.Tests.Models
         {
             QuestionSelector questionSelector = new QuestionSelector();
 
-            IEnumerable<QuestionBag> questions = questionSelector.Select();
+            IEnumerable<QuizQuestionAndAnswers> questions = questionSelector.Select();
 
             Assert.IsTrue(questions.Count() > 0);
 
